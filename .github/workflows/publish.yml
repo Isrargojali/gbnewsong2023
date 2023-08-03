@@ -32,7 +32,7 @@ jobs:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           FTP_HOST: ${{ secrets.FTP_HOST }}
-          BUILD_FOLDER: "build" # Replace with the name of your build folder
-          HOSTINGER_PUBLIC_FOLDER: "/home/u296449670/domains/gbnewsongs.com/public_html/"
+         #BUILD_FOLDER: "" # Replace with the name of your build folder
+          HOSTINGER_PUBLIC_FOLDER: "/public_html/"
         run: |
-          lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror --reverse --verbose $BUILD_FOLDER $HOSTINGER_PUBLIC_FOLDER"
+          lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror --reverse --verbose $HOSTINGER_PUBLIC_FOLDER"
