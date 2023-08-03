@@ -24,9 +24,6 @@ jobs:
       - name: Build
         run: npm run build # Replace with the build command of your project
 
-      - name: Debug Build Folder
-        run: ls -la $BUILD_FOLDER
-
       - name: Install lftp
         run: sudo apt-get install -y lftp
 
@@ -37,4 +34,4 @@ jobs:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           BUILD_FOLDER: "build" # Replace with the name of your build folder
         run: |
-          lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror --reverse --verbose --exclude-glob .git --exclude-glob .gitignore --exclude . $BUILD_FOLDER/*"
+          lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror --reverse --verbose --exclude-glob .git --exclude-glob .gitignore --exclude build/* $BUILD_FOLDER/ /public_html/"
