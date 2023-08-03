@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build # Replace with the build command of your project
+        run: npm run build # Replace with the dddbuild command of your project
 
       - name: Install lftp
         run: sudo apt-get install -y lftp
