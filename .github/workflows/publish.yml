@@ -20,4 +20,5 @@ jobs:
         run: npm run build # The build command of your project
 
       - name: Deploy
-        run: curl -X POST https://webhooks.hostinger.com/deploy/ebb4959ed6b93b0f8b7c57455944d4fa
+       curl -X POST -u israrahmad@hotmail.com:Iamkhan@230443 https://webhooks.hostinger.com/deploy/ebb4959ed6b93b0f8b7c57455944d4fa
+
