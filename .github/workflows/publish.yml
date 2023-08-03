@@ -24,6 +24,9 @@ jobs:
       - name: Build
         run: npm run build # Replace with the build command of your project
 
+      - name: Debug Build Folder
+        run: ls -la $BUILD_FOLDER
+
       - name: Install lftp
         run: sudo apt-get install -y lftp
 
