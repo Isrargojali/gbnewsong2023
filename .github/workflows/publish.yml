@@ -32,6 +32,6 @@ jobs:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           FTP_HOST: ${{ secrets.FTP_HOST }}
-          BUILD_FOLDER: "build" # Replace with the name of your build folde
+          BUILD_FOLDER: "build" # Replace with the name of your build folder
         run: |
           lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; cd public_html; mirror --reverse --verbose --exclude-glob .git --exclude-glob .gitignore --exclude build  $BUILD_FOLDER"
