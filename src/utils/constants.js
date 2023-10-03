@@ -1,4 +1,4 @@
-export const logo = 'https://i.ibb.co/s9Qys2j/logo.png';
+// export const logo = 'https://i.ibb.co/s9Qys2j/logo.png';
 
 
 export const demoThumbnailUrl = 'https://i.ibb.co/G2L2Gwp/API-Course.png';
