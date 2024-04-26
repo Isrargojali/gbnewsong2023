@@ -22,6 +22,7 @@ const SearchBar = () => {
       component='form'
       onSubmit={onhandleSubmit}
       sx={{
+        width: "50%",
         borderRadius: 20,
         border: '1px solid #e3e3e3',
         pl: 2,
@@ -34,6 +35,7 @@ const SearchBar = () => {
         placeholder='Search...'
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        style={{width: "80%"}}
       />
       <IconButton type='submit' sx={{ p: '10px', color: 'red' }} aria-label='search'>
         <SearchIcon />

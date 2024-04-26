@@ -1,13 +1,21 @@
 import React from "react";
 import { Stack } from "@mui/material";
-import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import gbSoundCloudIcon from "./assets/gb-soundcloud.png";
+import urduSongsIcon from "./assets/urdu.png";
+import shinaSongsIcon from "./assets/shina.png";
+import brushaskiSongsIcon from "./assets/brushaski.png";
+import wakhiSongsIcon from "./assets/wakhi.png";
+import khuwarSongsIcon from "./assets/khuwar.png";
+import baltistaniSongsIcon from "./assets/balti.png";
+
 const customOptions = [
-  { name: 'GB SoundCloud', icon: <MusicNoteIcon />, },
-  { name: "SHINA SONG", icon: <MusicNoteIcon />, },
-  { name: "WAKHI SONG", icon: <MusicNoteIcon />, },
-  { name: "KHUWAR SONG", icon: <MusicNoteIcon />, },
-  { name: "BALTI SONG", icon: <MusicNoteIcon />, },
-  { name: "URDU SONG", icon: <MusicNoteIcon />, },
+  { name: 'GB SoundCloud', icon: <img style={{width: "40px"}} src={gbSoundCloudIcon} alt="GB SoundCloud" />, },
+  { name: "URDU SONGS", icon: <img style={{width: "40px"}} src={urduSongsIcon} alt="Urdu Songs" />, },
+  { name: "SHINA SONGS", icon: <img style={{width: "40px"}} src={shinaSongsIcon} alt="Shina Songs" />, },
+  { name: "BRUSHASKI SONGS", icon: <img style={{width: "40px"}} src={brushaskiSongsIcon} alt="Brushaski Songs" />, },
+  { name: "WAKHI SONGS", icon: <img style={{width: "40px"}} src={wakhiSongsIcon} alt="Wakhi Songs" />, },
+  { name: "KHUWAR SONGS", icon: <img style={{width: "40px"}} src={khuwarSongsIcon} alt="Khuwar Songs" />, },
+  { name: "BALTISTANI SONGS", icon: <img style={{width: "40px"}} src={baltistaniSongsIcon} alt="Baltistani Songs" />, },
 ];
 
 const Categories = ({ selectedCategory, setSelectedCategory }) => (

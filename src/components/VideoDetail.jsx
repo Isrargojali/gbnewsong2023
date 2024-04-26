@@ -6,11 +6,13 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 import { Videos, Loader } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
+import AdComponent from "./AdComponent";
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
   const { id } = useParams();
+  const [showAd, setShowAd] = useState(false);
 
   useEffect(() => {
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
@@ -29,7 +31,12 @@ const VideoDetail = () => {
       <Stack direction={{ xs: "column", md: "row" }}>
         <Box flex={1}>
           <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
-            <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
+            <ReactPlayer 
+              url={`https://www.youtube.com/watch?v=${id}`} 
+              className="react-player" 
+              controls 
+              onPlay={() => setShowAd(true)}
+            />
             <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
               {title}
             </Typography>
@@ -49,6 +56,7 @@ const VideoDetail = () => {
                 </Typography>
               </Stack>
             </Stack>
+            <AdComponent showAd={showAd} />
           </Box>
         </Box>
         <Box px={2} py={{ md: 1, xs: 5 }} justifyContent="center" alignItems="center" >

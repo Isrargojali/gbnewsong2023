@@ -9,7 +9,7 @@ const instance = axios.create({
     "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
   },
   params: {
-    maxResults: "50",
+    maxResults: "100",
   },
 });
 
