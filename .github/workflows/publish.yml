@@ -14,7 +14,7 @@ jobs:
       FTP_USER: ${{ secrets.FTP_USER }}
       FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
       FTP_PORT: 21
-      LOCAL_DIR: "/build"
+      LOCAL_DIR: "/builds"
       REMOTE_DIR: "/public_html"
 
     steps:
