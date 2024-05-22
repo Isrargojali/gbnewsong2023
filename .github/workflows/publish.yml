@@ -1,4 +1,4 @@
-name: Deploy to Hostinger
+name: Deploy to FTP
 
 on:
   push:
@@ -8,30 +8,22 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy to Hostinger
+
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_USER: ${{ secrets.FTP_USER }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      FTP_PORT: 21
+      LOCAL_DIR: "/build"
+      REMOTE_DIR: "/public_html"
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Install Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build # Replace with the build command of your project
-
-      - name: Install lftp
-        run: sudo apt-get install -y lftp
-
-      - name: FTP Deployment
-        env:
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          BUILD_FOLDER: "build" # Replace with the name of your build folder
-        run: |
-          lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; cd public_html; mirror --reverse --verbose --exclude-glob .git --exclude-glob .gitignore --exclude build  $BUILD_FOLDER"
+    - name: Install lftp
+      run: sudo apt-get install lftp -y
+d
+    - name: Deploy using lftp
+      run: |
+        lftp -e "set ssl:verify-certificate no; open -u $FTP_USER,$FTP_PASSWORD -p $FTP_PORT $FTP_SERVER; mirror --reverse --delete --verbose $LOCAL_DIR $REMOTE_DIR; bye"
